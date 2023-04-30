@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ES2021",
+        "lib": [
+            "ES2021"
+        ],
+        "moduleResolution": "node16",
+        "removeComments": true,
+
+        "outDir": "dist",
+        "sourceMap": true,
+        "declaration": true,
+
+        // strict checks
+        "strict": true,
+        "allowUnreachableCode": false,
+
+        // lint checks
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
+    },
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.mts",
+      "src/**/*.cts",
+    ]
+}
