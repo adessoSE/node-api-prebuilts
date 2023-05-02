@@ -18,6 +18,8 @@ __metadata:
     eslint-config-prettier: ^8.8.0
     prettier: 2.8.8
     typescript: ^5.0.4
+  bin:
+    node-api-prebuilts: ./bin/entrypoint.cjs
   languageName: unknown
   linkType: soft
 
