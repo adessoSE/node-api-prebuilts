@@ -10,7 +10,7 @@ __metadata:
   resolution: "@adesso-se/node-api-prebuilts@workspace:."
   dependencies:
     "@types/eslint": ^8
-    "@types/node": ~16.10
+    "@types/node": ~16.11.68
     "@types/prettier": ^2
     "@typescript-eslint/eslint-plugin": ^5.59.1
     "@typescript-eslint/parser": ^5.59.1
@@ -141,10 +141,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:~16.10":
-  version: 16.10.9
-  resolution: "@types/node@npm:16.10.9"
-  checksum: b47c3e3896ce243d3bc9e356578d4d607357d9ea0c1445a15cb564341580ac4db4f95677bf15fd354e46343edbd171ac19701740a53637234411da5b66c883a4
+"@types/node@npm:~16.11.68":
+  version: 16.11.68
+  resolution: "@types/node@npm:16.11.68"
+  checksum: a35293b6b8867e10ab9e10b6cd5f0e4224a86256d5ef102581dcb9f79f35f255ad87443e8584ddf8dce1229ee28885c58187e41822cf8d1e82495e7897c47c3f
   languageName: node
   linkType: hard
 

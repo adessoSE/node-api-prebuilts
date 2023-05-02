@@ -29,7 +29,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@types/eslint", "npm:8.37.0"],\
-            ["@types/node", "npm:16.10.9"],\
+            ["@types/node", "npm:16.11.68"],\
             ["@types/prettier", "npm:2.7.2"],\
             ["@typescript-eslint/eslint-plugin", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:5.59.1"],\
             ["@typescript-eslint/parser", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:5.59.1"],\
@@ -47,7 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@adesso-se/node-api-prebuilts", "workspace:."],\
             ["@types/eslint", "npm:8.37.0"],\
-            ["@types/node", "npm:16.10.9"],\
+            ["@types/node", "npm:16.11.68"],\
             ["@types/prettier", "npm:2.7.2"],\
             ["@typescript-eslint/eslint-plugin", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:5.59.1"],\
             ["@typescript-eslint/parser", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:5.59.1"],\
@@ -223,10 +223,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/node", [\
-        ["npm:16.10.9", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-16.10.9-ca2f752781-b47c3e3896.zip/node_modules/@types/node/",\
+        ["npm:16.11.68", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.68-c2f2ea9840-a35293b6b8.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:16.10.9"]\
+            ["@types/node", "npm:16.11.68"]\
           ],\
           "linkType": "HARD"\
         }]\
