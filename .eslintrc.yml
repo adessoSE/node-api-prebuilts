@@ -15,9 +15,12 @@ parser: '@typescript-eslint/parser'
 parserOptions:
   project: true
   ecmaVersion: latest
+  project: ./tsconfig.lib.json
 plugins:
   - '@typescript-eslint'
-rules: {}
+rules:
+  "@typescript-eslint/no-non-null-assertion": off
 ignorePatterns:
   - bin/**/*
   - dist/**/*
+  - jest.config.js
