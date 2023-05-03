@@ -36,6 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:5.59.1"],\
             ["eslint", "npm:8.39.0"],\
             ["eslint-config-prettier", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:8.8.0"],\
+            ["eslint-plugin-simple-import-sort", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:10.0.0"],\
             ["jest", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:29.5.0"],\
             ["prettier", "npm:2.8.8"],\
             ["ts-jest", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:29.1.0"],\
@@ -57,6 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:5.59.1"],\
             ["eslint", "npm:8.39.0"],\
             ["eslint-config-prettier", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:8.8.0"],\
+            ["eslint-plugin-simple-import-sort", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:10.0.0"],\
             ["jest", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:29.5.0"],\
             ["prettier", "npm:2.8.8"],\
             ["ts-jest", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:29.1.0"],\
@@ -2690,6 +2692,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/eslint-config-prettier-virtual-84895fe7fa/0/cache/eslint-config-prettier-npm-8.8.0-f1bf18b9b1-1e94c3882c.zip/node_modules/eslint-config-prettier/",\
           "packageDependencies": [\
             ["eslint-config-prettier", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:8.8.0"],\
+            ["@types/eslint", "npm:8.37.0"],\
+            ["eslint", "npm:8.39.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/eslint",\
+            "eslint"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["eslint-plugin-simple-import-sort", [\
+        ["npm:10.0.0", {\
+          "packageLocation": "./.yarn/cache/eslint-plugin-simple-import-sort-npm-10.0.0-695149a137-23221ff63f.zip/node_modules/eslint-plugin-simple-import-sort/",\
+          "packageDependencies": [\
+            ["eslint-plugin-simple-import-sort", "npm:10.0.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:10.0.0", {\
+          "packageLocation": "./.yarn/__virtual__/eslint-plugin-simple-import-sort-virtual-858e943d9a/0/cache/eslint-plugin-simple-import-sort-npm-10.0.0-695149a137-23221ff63f.zip/node_modules/eslint-plugin-simple-import-sort/",\
+          "packageDependencies": [\
+            ["eslint-plugin-simple-import-sort", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:10.0.0"],\
             ["@types/eslint", "npm:8.37.0"],\
             ["eslint", "npm:8.39.0"]\
           ],\
