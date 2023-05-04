@@ -15,6 +15,11 @@
     "dist/",
     "src/"
   ],
+  "scripts": {
+    "compile": "tsc -p tsconfig.lib.json",
+    "lint": "eslint src",
+    "test": "jest"
+  },
   "devDependencies": {
     "@jest/globals": "^29.5.0",
     "@types/eslint": "^8",
