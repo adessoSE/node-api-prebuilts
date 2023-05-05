@@ -1,5 +1,6 @@
 import { argv, exit } from "node:process";
 
+import { checkPathCommand } from "./check-path.js";
 import { copyArtifactsCommand } from "./copy.js";
 import { helpCommand } from "./help.js";
 import { parseArgs } from "./simple-args.js";
@@ -18,6 +19,10 @@ delete params.cmd;
 switch (cmd) {
   case "copy":
     copyArtifactsCommand(params);
+    break;
+
+  case "check-path":
+    checkPathCommand(params);
     break;
 
   case undefined:

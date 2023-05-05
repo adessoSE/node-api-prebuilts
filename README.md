@@ -42,7 +42,7 @@ COMMANDS
     The triplet related options default to the host platform.
 
     --build-dir=<string>    The path to the directory containing the node addon
-    --package-dir=<string>  The path to the packaging directory 
+    --package-dir=<string>  The path to the packaging directory
                               (will contain the "prebuilts" directory)
     --name=<string>         filename of the node addon (without ".node" stem)
     --napi-version=<int>    Node API version the addon has been compiled against
@@ -54,6 +54,13 @@ COMMANDS
     --libc=<string>         The name of the target C runtime implementation;
                               defaults to the host C runtime implementation
 
+  --cmd=check-path
+    Checks whether the prebuilt addon loader will find an addon. It does so by
+    constructing the possible addon locations and checking whether a file exists
+    in that place. It sets an exit code != 0 if no file is found or the environ-
+    ment variable "npm_config_build_from_source" is set.
+
+    --loader-options=<path> The path to the LoaderOptions json file (required).
 
 EXAMPLES
 ```
