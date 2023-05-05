@@ -21,6 +21,7 @@
     "src/"
   ],
   "scripts": {
+    "prepack": "tsc -p tsconfig.lib.json",
     "compile": "tsc -p tsconfig.lib.json",
     "lint": "eslint src",
     "test": "jest"
