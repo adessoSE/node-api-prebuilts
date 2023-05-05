@@ -1,8 +1,10 @@
 export {
   copyArtifacts,
+  createRequireAddon,
   type LoaderOptions,
   loadLoaderOptions,
   probeAddonPathForFile,
+  requireAddon,
 } from "./addon.js";
 export { compatiblePrebuiltAddonPaths } from "./paths.js";
 export {

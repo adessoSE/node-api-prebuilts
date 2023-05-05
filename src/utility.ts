@@ -10,6 +10,9 @@ declare global {
   }
 }
 
+export function isNonNullObject(val: unknown): val is Record<string, unknown> {
+  return typeof val === "object" && val != null;
+}
 export function isNonEmptyString(val: unknown): val is string {
   return typeof val === "string" && val.length > 0;
 }
