@@ -1,89 +1,9 @@
 import { constants, copyFileSync, mkdirSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { exit, versions } from "node:process";
 
-import { prebuiltsDirectoryPath, versionedAddonFilename } from "../paths.js";
-import { ConfigurationNode, validateConfigOrExit } from "../simple-args.js";
-import { activeTriplet, makeTripletWithFallback, Triplet } from "../triplet.js";
-import { CommandError, isErrnoException } from "../utility.js";
-
-interface CopyParams {
-  "build-dir": string;
-  "package-dir": string;
-
-  platform?: string;
-  arch?: string;
-  libc?: string;
-
-  name?: string;
-  "napi-version"?: number;
-
-  files?: string;
-}
-const copyParamsSpec = {
-  "build-dir": {
-    type: "string",
-    required: true,
-  },
-  "package-dir": {
-    type: "string",
-    required: true,
-  },
-  platform: {
-    type: "string",
-  },
-  arch: {
-    type: "string",
-  },
-  libc: {
-    type: "string",
-  },
-  name: {
-    type: "string",
-  },
-  "napi-version": {
-    type: "number",
-  },
-  files: {
-    type: "string",
-  },
-} as const;
-
-export default function copyArtifactsCommand(config: ConfigurationNode) {
-  const params = validateConfigOrExit<CopyParams>(config, copyParamsSpec);
-
-  const triplet = makeTripletWithFallback(params, activeTriplet());
-  const files = params.files?.split(",") ?? [];
-  const napiVersion = params["napi-version"] ?? parseInt(versions.napi);
-
-  if (params.name == null && files.length < 1) {
-    console.error(
-      "node-api-prebuilts: Missing --name or --files option. Use --help to print usage information.",
-    );
-    exit(-1);
-  }
-
-  try {
-    copyArtifacts(
-      params["build-dir"],
-      params["package-dir"],
-      triplet,
-      napiVersion,
-      {
-        name: params.name,
-        files,
-      },
-    );
-  } catch (exc) {
-    if (exc instanceof CommandError) {
-      console.error(exc.message);
-    } else {
-      console.error("node-api-prebuilts: Failed to copy the artifacts.");
-      console.error(exc);
-    }
-    exit(1);
-  }
-}
+import { prebuiltsDirectoryPath, versionedAddonFilename } from "./paths";
+import { Triplet } from "./triplet";
+import { CommandError, isErrnoException } from "./utility";
 
 /**
  * Copies a node addon from its build directory to the prebuilts directory.

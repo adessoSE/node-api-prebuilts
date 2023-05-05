@@ -1,4 +1,4 @@
-export { copyArtifacts } from "./cmds/copy.js";
+export { copyArtifacts } from "./addon.js";
 export {
   activeTriplet,
   hostTriplet,

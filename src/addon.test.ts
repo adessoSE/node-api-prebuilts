@@ -1,7 +1,8 @@
 import { afterEach, describe, expect, it, jest } from "@jest/globals";
 import type { copyFileSync, mkdirSync, statSync } from "fs";
-import { copyArtifacts } from "./copy";
 import { sep } from "path";
+
+import { copyArtifacts } from "./addon";
 
 type FsMock = {
   mkdirSync: jest.MockedFunction<typeof mkdirSync>;
@@ -23,7 +24,7 @@ jest.mock(
   }),
 );
 
-describe("copy-command", () => {
+describe("addon", () => {
   afterEach(() => {
     jest.resetAllMocks();
   });

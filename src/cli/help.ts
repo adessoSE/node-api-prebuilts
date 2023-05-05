@@ -1,5 +1,3 @@
-import { ConfigurationNode } from "../simple-args";
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { version } = require("../../package.json") as { version: string };
 
@@ -36,7 +34,6 @@ COMMANDS
 EXAMPLES
 `;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export default function helpCommand(_config: ConfigurationNode) {
+export function helpCommand() {
   console.log(helpText);
 }

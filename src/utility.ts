@@ -26,7 +26,7 @@ export class CommandError extends Error {
   constructor(message: string, readonly cause?: unknown) {
     super(
       isErrnoException(cause)
-        ? `${message}\ncause: ${cause.code!}, ${cause.message}`
+        ? `${message}\n${cause.message}`
         : cause instanceof Error
         ? `${message}\ncause: ${cause.message}`
         : message,
