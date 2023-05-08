@@ -15,6 +15,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install Yarn with Corepack
+        run: corepack enable |
+          corepack prepare yarn@stable --activate
 
       - name: yarn install
         run: yarn install --immutable --immutable-cache
@@ -22,6 +25,7 @@ jobs:
       - name: yarn install --check-cache
         run: yarn install --immutable --immutable-cache --check-cache
         if: ${{ github.event_name == 'pull_request' }}
+
 
   compile:
     name: Compile TypeScript
@@ -31,11 +35,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install Yarn with Corepack
+        run: corepack enable |
+          corepack prepare yarn@stable --activate
 
       - name: yarn install
         run: yarn install --immutable --immutable-cache
       - name: compile
         run: yarn compile
+
 
   lint:
     name: Run ESLint
@@ -45,11 +53,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install Yarn with Corepack
+        run: corepack enable |
+          corepack prepare yarn@stable --activate
 
       - name: yarn install
         run: yarn install --immutable --immutable-cache
       - name: lint
         run: yarn lint
+
 
   test:
     name: Test
@@ -59,6 +71,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install Yarn with Corepack
+        run: corepack enable |
+          corepack prepare yarn@stable --activate
 
       - name: yarn install
         run: yarn install --immutable --immutable-cache

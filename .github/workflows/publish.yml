@@ -11,6 +11,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install Yarn with Corepack
+        run: corepack enable |
+          corepack prepare yarn@stable --activate
 
       - name: yarn install
         run: yarn install --immutable --immutable-cache
