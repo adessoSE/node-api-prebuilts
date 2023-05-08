@@ -48,11 +48,27 @@ export interface AddonModule<Addon extends object = UnknownRecord> {
  * @see requireAddon
  */
 export function createRequireAddon(_require: NodeJS.Require) {
-  return function requireAddon<Addon extends object = UnknownRecord>(
+  function requireAddon<Addon extends object = UnknownRecord>(
     packageDir: string,
-    loaderOptions: LoaderOptions,
+    loaderOptions: string,
+  ): AddonModule<Addon>;
+  function requireAddon<Addon extends object = UnknownRecord>(
+    packageDir: string,
+    loaderOptionsPath: LoaderOptions,
+  ): AddonModule<Addon>;
+  function requireAddon<Addon extends object = UnknownRecord>(
+    packageDir: string,
+    loaderOptions: LoaderOptions | string,
   ): AddonModule<Addon> {
-    validateRequireAddonArgs(packageDir, loaderOptions);
+    if (!isNonEmptyString(packageDir)) {
+      throw new Error(
+        "requireAddon() first argument must be a non-empty string",
+      );
+    }
+    if (typeof loaderOptions === "string") {
+      loaderOptions = loadLoaderOptions(join(packageDir, loaderOptions));
+    }
+    validateLoaderOptions(loaderOptions);
     const addonPaths = compatiblePrebuiltAddonPaths(loaderOptions, packageDir);
 
     addonPaths.unshift(
@@ -84,7 +100,9 @@ export function createRequireAddon(_require: NodeJS.Require) {
     // the loop above will either return early or rethrow the exception thrown by
     // the last failed addon load attempt.
     throw new Error(`unreachable`);
-  };
+  }
+
+  return requireAddon;
 }
 
 const nativeRequire =
@@ -222,17 +240,7 @@ export function loadLoaderOptions(optionsPath: string): LoaderOptions {
   }
 }
 
-function validateRequireAddonArgs(
-  basePath: unknown,
-  loaderOptions: unknown,
-): void {
-  if (!isNonEmptyString(basePath)) {
-    throw new Error("addonPath() first argument must be a non-empty string");
-  }
-  validateAddonInfo(loaderOptions);
-}
-
-function validateAddonInfo(loaderOptions: unknown): void {
+function validateLoaderOptions(loaderOptions: unknown): void {
   if (!isNonNullObject(loaderOptions)) {
     throw new Error("addonPath second argument must be an object");
   }

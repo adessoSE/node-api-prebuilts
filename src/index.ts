@@ -1,4 +1,5 @@
 export {
+  type AddonModule,
   copyArtifacts,
   createRequireAddon,
   type LoaderOptions,
