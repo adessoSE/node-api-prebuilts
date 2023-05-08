@@ -1,5 +1,7 @@
 import { arch, env, platform } from "node:process";
 
+import { familySync } from "detect-libc";
+
 import { isNonEmptyString } from "./utility.js";
 
 /**
@@ -55,7 +57,7 @@ export function hostTriplet(): Triplet {
   return {
     platform,
     arch,
-    libc: platform === "linux" ? "glibc" : null, // TODO: use familySync from detect-libc
+    libc: familySync(),
   };
 }
 /**
