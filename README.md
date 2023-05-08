@@ -4,7 +4,7 @@
 A CLI and library to manage, locate and load prebuilt node addons targetting [Node-API].
 The tool should be used as a post-build step to copy the native addon into a
 directory structure which disambiguates the binaries by their triplets.
-So it serves a similar purpose to [`prebuildify`] and [`pkg-prebuilds`].
+It serves a similar purpose to [`prebuildify`] and [`pkg-prebuilds`].
 
 Design goals:
   * don't drag in any "unnecessary" dependencies (see [below](#no-unnecessary-dependencies))
@@ -25,7 +25,119 @@ yarn add @adesso-se/node-api-prebuilts
 npm install --save @adesso-se/node-api-prebuilts
 ```
 
-### CLI documentation
+Add the `prebuilts/` directory to your `.gitignore` and include it in your 
+distribution package via the `package.json#files` property.
+
+Add a post-build step to your native addon that copies the built addon into the
+`prebuilts` directory. The invocation should roughly look like this:
+```sh
+node-api-prebuilts --cmd=copy --build-dir=buid/Release --package-dir=. --name=nvefs --napi-version=8
+```
+See [CLI Documentation](#cli-documentation) for more information.
+
+Add a `loader-options.json` to your package. It defines the supported Node API
+versions and the addon name in a central place, e.g.:
+```json
+{
+  "name": "nvefs",
+  "napi_versions": [8]
+}
+```
+With the scaffolding in place the addon can be loaded like this (assuming the
+compiled js output is placed in the package root):
+```ts
+import { requireAddon } from '@adesso-se/node-api-prebuilts';
+const {
+  exports: {
+    foo,
+    bar,
+  },
+} = requireAddon<{
+  foo: (arg: string) => bool;
+  bar: object;
+}>(__dirname, "loader-options.json");
+```
+
+Lastly you want to prevent rebuilding the native addon on package-install if a
+suitable prebuilt binary already exists:
+```json
+{
+  "scripts": {
+    "install": "node-api-prebuilts --cmd=check-path --loader-options=loader-options.json || <the addon needs to be built>"
+  }
+}
+```
+The `check-path` command sets the exit code to zero if a prebuilt binary has 
+been found and to a non-zero exit code otherwise.
+
+
+### API Synopsis
+
+```ts
+/**
+ * Describes which file paths to consider when attempting to load an addon.
+ */
+export interface LoaderOptions {
+  /**
+   * The addon's basename
+   *
+   * The loader will append '.node' stem and the Node API version suffix.
+   */
+  readonly name: string;
+  /**
+   * Specifies which Node API version suffixes will be tried by the loader.
+   */
+  readonly napi_versions: readonly number[];
+}
+
+/**
+ * Reads the json LoaderOptions representation from disk.
+ *
+ * (It currently doesn't validate the loaded json)
+ */
+export declare function loadLoaderOptions(optionsPath: string): LoaderOptions;
+
+/**
+ * Loads the node addon and returns its exports, load path and resolved path.
+ * The latter two might be useful if you need to `dlopen()` the addon binary
+ * later on.
+ *
+ * The function first tries to load the addon from the `build/` directory, i.e.
+ * if the user built a debug version or requested a from-source-build via
+ * `npm_config_build_from_source` it takes preference over any prebuilt binary.
+ * Afterwards it tries to load all paths returned by @linkcode prebuiltsDirectoryPath()
+ * until a binary is found. If this isn't the case it will rethrow the last
+ * `"MODULE_NOT_FOUND"` exception.
+ *
+ * @param packageDir specifies the path to the directory containing `prebuilts`
+ * @param loaderOptions specifies which native addon to look for
+ * @param loaderOptionsPath specifies a filepath relative to `packageDir`
+ *                          containing a json representation of loaderOptions
+ * @returns the addon's exports, load path and resolved path.
+ */
+export declare function requireAddon<Addon extends object = UnknownRecord>(
+  packageDir: string,
+  loaderOptions: LoaderOptions,
+): AddonModule<Addon>;
+export declare function requireAddon<Addon extends object = UnknownRecord>(
+  packageDir: string,
+  loaderOptionsPath: string,
+): AddonModule<Addon>;
+
+export interface AddonModule<Addon extends object = UnknownRecord> {
+  readonly exports: Addon;
+  readonly path: string;
+  readonly resolvedPath: string;
+}
+// exposition only => not exported or part of the package API
+type UnknownRecord = Record<string | number | symbol, unknown>;
+```
+Note that this doesn't describe all public APIs but the most commonly used ones.
+Consult `src/index.ts` for a complete list. All public APIs have JSDoc comments.
+
+
+### CLI Documentation
+
 ```
 USAGE
   $ node-api-prebuilts [-h | --help]
