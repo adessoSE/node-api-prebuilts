@@ -9,6 +9,7 @@ USAGE
   $ node-api-prebuilts --cmd=copy --build-dir=<string> --package-dir=<string>
                        [--name=<string> [--napi-version=<int>]]
                        [--files=<comma seperated filenames>]
+  $ node-api-prebuilts --cmd=check-path --loader-options=<string>
 
 COMMANDS
   --cmd=copy
@@ -39,6 +40,17 @@ COMMANDS
     --loader-options=<path> The path to the LoaderOptions json file (required).
 
 EXAMPLES
+  Copy an addon named "nvefs" from build/Release to the prebuilts directory:
+  $ node-api-prebuilts --cmd=copy --build-dir=buid/Release --package-dir=. \\
+      --name=nvefs --napi-version=8
+
+  Copy foo.so and bar.so from build/Release to the prebuilts directory
+  $ node-api-prebuilts --cmd=copy --build-dir=buid/Release --package-dir=. \\
+      --files=foo.so,bar.so
+
+  Check whether a file would be found by "requireAddon" with the given
+  loader-options.json
+  $ node-api-prebuilts --cmd=check-path --loader-options=loader-options.json
 `;
 
 export function helpCommand() {
