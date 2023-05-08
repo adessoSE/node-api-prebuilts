@@ -1,0 +1,66 @@
+name: CI
+on:
+    push:
+        branches:
+            - master
+            - releases/v*
+    pull_request:
+
+jobs:
+  validate-dependencies:
+    name: Validate dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: yarn install
+        run: yarn install --immutable --immutable-cache
+        if: ${{ github.event_name != 'pull_request' }}
+      - name: yarn install --check-cache
+        run: yarn install --immutable --immutable-cache --check-cache
+        if: ${{ github.event_name == 'pull_request' }}
+
+  compile:
+    name: Compile TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: yarn install
+        run: yarn install --immutable --immutable-cache
+      - name: compile
+        run: yarn compile
+
+  lint:
+    name: Run ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: yarn install
+        run: yarn install --immutable --immutable-cache
+      - name: lint
+        run: yarn lint
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: yarn install
+        run: yarn install --immutable --immutable-cache
+      - name: jest
+        run: yarn test
