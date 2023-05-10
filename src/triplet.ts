@@ -1,4 +1,4 @@
-import { arch, env, platform } from "node:process";
+import { arch, config, env, platform } from "node:process";
 
 import { familySync } from "detect-libc";
 
@@ -50,13 +50,26 @@ export interface Triplet {
   libc: string | null;
 }
 
+function hasArmVersion(
+  vars: NodeJS.ProcessConfig["variables"],
+): vars is NodeJS.ProcessConfig["variables"] & {
+  arm_version: string;
+} {
+  return "arm_version" in vars;
+}
+// see https://github.com/nodejs/node/issues/9491
+const sanitizedArch =
+  arch !== "arm" || !hasArmVersion(config.variables)
+    ? arch
+    : `armv${config.variables.arm_version}`;
+
 /**
  * Returns the triplet of the currently executing process.
  */
 export function hostTriplet(): Triplet {
   return {
     platform,
-    arch,
+    arch: sanitizedArch,
     libc: familySync(),
   };
 }
