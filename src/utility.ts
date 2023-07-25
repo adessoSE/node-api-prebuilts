@@ -26,7 +26,10 @@ export function isErrnoException(exc: unknown): exc is NodeJS.ErrnoException {
 }
 
 export class CommandError extends Error {
-  constructor(message: string, readonly cause?: unknown) {
+  constructor(
+    message: string,
+    readonly cause?: unknown,
+  ) {
     super(
       isErrnoException(cause)
         ? `${message}\n${cause.message}`
