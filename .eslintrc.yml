@@ -10,7 +10,7 @@ extends:
   - plugin:@typescript-eslint/stylistic-type-checked
   - prettier
 overrides: []
-parser: '@typescript-eslint/parser'
+parser: "@typescript-eslint/parser"
 parserOptions:
   project: ./tsconfig.lib.json
   ecmaVersion: latest
