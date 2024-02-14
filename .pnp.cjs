@@ -28,7 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@jest/globals", "npm:29.7.0"],\
           ["@types/eslint", "npm:8.56.2"],\
-          ["@types/node", "npm:16.11.68"],\
+          ["@types/node", "npm:18.0.6"],\
           ["@typescript-eslint/eslint-plugin", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:7.0.1"],\
           ["@typescript-eslint/parser", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:7.0.1"],\
           ["detect-libc", "npm:2.0.2"],\
@@ -59,7 +59,7 @@ const RAW_RUNTIME_STATE =
           ["@adesso-se/node-api-prebuilts", "workspace:."],\
           ["@jest/globals", "npm:29.7.0"],\
           ["@types/eslint", "npm:8.56.2"],\
-          ["@types/node", "npm:16.11.68"],\
+          ["@types/node", "npm:18.0.6"],\
           ["@typescript-eslint/eslint-plugin", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:7.0.1"],\
           ["@typescript-eslint/parser", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:7.0.1"],\
           ["detect-libc", "npm:2.0.2"],\
@@ -1514,10 +1514,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/node", [\
-      ["npm:16.11.68", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-16.11.68-c2f2ea9840-7906b0fe63.zip/node_modules/@types/node/",\
+      ["npm:18.0.6", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-18.0.6-1bdee507ca-a985b03f9a.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:16.11.68"]\
+          ["@types/node", "npm:18.0.6"]\
         ],\
         "linkType": "HARD"\
       }],\
