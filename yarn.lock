@@ -18,7 +18,7 @@ __metadata:
   dependencies:
     "@jest/globals": "npm:^29.7.0"
     "@types/eslint": "npm:^8.56.2"
-    "@types/node": "npm:~16.11.68"
+    "@types/node": "npm:~18.0.6"
     "@typescript-eslint/eslint-plugin": "npm:^7.0.1"
     "@typescript-eslint/parser": "npm:^7.0.1"
     detect-libc: "npm:^2.0.2"
@@ -997,10 +997,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:~16.11.68":
-  version: 16.11.68
-  resolution: "@types/node@npm:16.11.68"
-  checksum: 10/7906b0fe63f64a0ee8a929c643560c6813b279c43495d69de6e331c1d24488a1e35149da870856a247c588058b108c2598650e8992409a834ee7960494fc1c4a
+"@types/node@npm:~18.0.6":
+  version: 18.0.6
+  resolution: "@types/node@npm:18.0.6"
+  checksum: 10/a985b03f9a8095c40f532b57098ba8612a59c91bf687ce79227060a5d15a99e246f77047962ce6b0e213324287463f0eca74a46c7e1c22929a719a2636dce675
   languageName: node
   linkType: hard
 
