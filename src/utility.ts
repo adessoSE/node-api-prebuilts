@@ -34,8 +34,8 @@ export class CommandError extends Error {
       isErrnoException(cause)
         ? `${message}\n${cause.message}`
         : cause instanceof Error
-        ? `${message}\ncause: ${cause.message}`
-        : message,
+          ? `${message}\ncause: ${cause.message}`
+          : message,
     );
     if (cause instanceof Error && isNonEmptyString(cause.stack)) {
       this.stack = cause.stack;
