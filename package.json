@@ -41,6 +41,6 @@
     "typescript": "~5.0.4"
   },
   "dependencies": {
-    "detect-libc": "^2.0.2"
+    "detect-libc": "^2.0.3"
   }
 }
