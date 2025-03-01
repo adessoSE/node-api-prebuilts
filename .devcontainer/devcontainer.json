@@ -1,4 +1,4 @@
 {
   "name": "Node.js",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm@sha256:896bfba10582c9239d1c36bab53b80af06253019f62b846fa440ee643ca63eb1"
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm@sha256:e3c925dd193d60ff9e677218da4b084da40cbce7240b1180ff285b956e12bff4"
 }
