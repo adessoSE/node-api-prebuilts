@@ -1,4 +1,13 @@
 {
   "name": "Node.js",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm@sha256:896bfba10582c9239d1c36bab53b80af06253019f62b846fa440ee643ca63eb1"
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm@sha256:896bfba10582c9239d1c36bab53b80af06253019f62b846fa440ee643ca63eb1",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "arcanis.vscode-zipfs",
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
 }
