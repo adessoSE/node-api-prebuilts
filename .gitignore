@@ -11,3 +11,6 @@
 #.pnp.*
 
 dist/*
+
+# vitest & prettier caches
+node_modules
