@@ -13,4 +13,5 @@ export {
   hostTriplet,
   makeTripletWithFallback,
   type Triplet,
+  tripletId,
 } from "./triplet.js";

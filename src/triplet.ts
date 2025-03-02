@@ -91,6 +91,15 @@ export function activeTriplet(): Triplet {
   return makeTripletWithFallback(configuredTriplet(), hostTriplet());
 }
 
+/**
+ * Bijectively maps a triplet to a filesystem-safe string.
+ */
+export function tripletId(triplet: Triplet): string {
+  return [triplet.platform, triplet.arch, triplet.libc]
+    .filter(isNonEmptyString)
+    .join("-");
+}
+
 export function makeTripletWithFallback(
   partialTriplet: Partial<Triplet>,
   fallback: Triplet,
