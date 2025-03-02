@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { version } = require("../../package.json") as { version: string };
 
 const helpText = `node-api-prebuilts - a management tool for prebuilt addons [version ${version}]
