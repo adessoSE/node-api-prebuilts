@@ -1,22 +1,61 @@
 name: Publish
 on:
-  release:
-    types: [published]
+  push:
+    tags: ['v*']
 
 jobs:
-  publish:
+  build-package:
     runs-on: ubuntu-latest
+    if: github.ref_protected == true
     steps:
       - uses: actions/checkout@v4
         with:
           filter: blob:limit=2m
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: "18"
       - name: Install Yarn with Corepack
         run: corepack enable |
           corepack prepare yarn@stable --activate
 
-      - run: yarn npm publish --access public
+      - run: yarn install
+      - run: yarn pack
+      - uses: actions/upload-artifact@v2
+        with:
+          name: node-package
+          path: package.tgz
+
+  publish-npm:
+    runs-on: ubuntu-latest
+    if: github.ref_protected == true
+    environment: publish
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
+      - name: Download the build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: node-package
+      - run: npm publish "${{ github.workspace }}/package.tgz" --access public --provenance
         env:
-          YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+  create-release:
+    name: Create the GitHub Release
+    if: github.ref_protected == true
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: node-package
+          path: ${{ github.workspace }}/dist/
+      - name: Create the release draft with the build artifacts
+        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda
+        with:
+          draft: true
+          files: ${{ github.workspace }}/dist/*
