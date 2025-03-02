@@ -56,6 +56,9 @@ jobs:
       - name: lint
         run: yarn lint
 
+      - name: prettier
+        run: yarn format:check
+
   test:
     name: Test
     runs-on: ubuntu-latest
