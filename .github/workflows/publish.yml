@@ -28,6 +28,8 @@ jobs:
   publish-npm:
     name: Publish the package to the npm registry
     environment: publish
+    permissions:
+      id-token: write
     runs-on: ubuntu-latest
     needs: [build-package]
     steps:
