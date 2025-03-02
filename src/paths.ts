@@ -2,7 +2,7 @@ import { join } from "node:path";
 import { versions } from "node:process";
 
 import type { LoaderOptions } from "./addon.js";
-import { activeTriplet, Triplet } from "./triplet.js";
+import { activeTriplet, Triplet, tripletId } from "./triplet.js";
 import { isNonEmptyString } from "./utility.js";
 
 /**
@@ -60,9 +60,7 @@ export function prebuiltsDirectoryPath(
  * Bijectively maps a triplet to a directory name.
  */
 export function tripletDirectoryName(triplet: Triplet): string {
-  return [triplet.platform, triplet.arch, triplet.libc]
-    .filter(isNonEmptyString)
-    .join("-");
+  return tripletId(triplet);
 }
 export function versionedAddonFilename(
   name: string,
