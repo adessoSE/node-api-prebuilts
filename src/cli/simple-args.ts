@@ -38,6 +38,8 @@ export type ConfigSpec = Record<
   { type: "string" | "number" | "boolean"; required?: boolean }
 >;
 
+// FIXME: relate `T` to `spec` or refactor to type guard
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
 export function validateConfig<T>(
   config: ConfigurationNode,
   spec: ConfigSpec,
@@ -64,6 +66,8 @@ export function validateConfig<T>(
   }
   return config as T;
 }
+// FIXME: relate `T` to `spec`
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
 export function validateConfigOrExit<T>(
   config: ConfigurationNode,
   spec: ConfigSpec,
