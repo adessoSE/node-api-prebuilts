@@ -1,41 +1,28 @@
-import { afterEach, describe, expect, it, jest } from "@jest/globals";
-import type { copyFileSync, mkdirSync, statSync } from "fs";
+import { fs, vol } from "memfs";
 import { sep } from "path";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { copyArtifacts } from "./addon";
 
-type FsMock = {
-  mkdirSync: jest.MockedFunction<typeof mkdirSync>;
-  statSync: jest.MockedFunction<typeof statSync>;
-  copyFileSync: jest.MockedFunction<typeof copyFileSync>;
-  constants: {
-    COPYFILE_FICLONE: number;
-  };
-};
-jest.mock(
-  "node:fs",
-  (): FsMock => ({
-    mkdirSync: jest.fn(),
-    statSync: jest.fn() as unknown as jest.MockedFunction<typeof statSync>,
-    copyFileSync: jest.fn(),
-    constants: {
-      COPYFILE_FICLONE: 0xc0de,
-    },
-  }),
-);
+vi.mock("node:fs");
+vi.mock("node:fs/promises");
 
 describe("addon", () => {
+  beforeEach(() => {
+    vol.reset();
+    vol.mkdirSync(process.cwd(), { recursive: true });
+  });
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   describe("copyArtifacts", () => {
     it("should create the output directory and call copyFile for the addon", () => {
-      const {
-        copyFileSync,
-        mkdirSync,
-        constants: { COPYFILE_FICLONE },
-      } = jest.requireMock<FsMock>("node:fs");
+      vol.fromJSON({
+        "build/Release/addon.node": "content",
+      });
+      const mkdirSync = vi.spyOn(fs, "mkdirSync");
+      const copyFileSync = vi.spyOn(fs, "copyFileSync");
 
       copyArtifacts(
         "build/Release",
@@ -54,15 +41,16 @@ describe("addon", () => {
       expect(copyFileSync).toHaveBeenCalledWith(
         `build${sep}Release${sep}addon.node`,
         `prebuilts${sep}win32-x64${sep}addon-napi06.node`,
-        COPYFILE_FICLONE,
+        fs.constants.COPYFILE_FICLONE,
       );
     });
+
     it("should create the output directory and call copyFile for the addon with libc", () => {
-      const {
-        copyFileSync,
-        mkdirSync,
-        constants: { COPYFILE_FICLONE },
-      } = jest.requireMock<FsMock>("node:fs");
+      vol.fromJSON({
+        "build/Release/addon.node": "content",
+      });
+      const mkdirSync = vi.spyOn(fs, "mkdirSync");
+      const copyFileSync = vi.spyOn(fs, "copyFileSync");
 
       copyArtifacts(
         "build/Release",
@@ -81,16 +69,17 @@ describe("addon", () => {
       expect(copyFileSync).toHaveBeenCalledWith(
         `build${sep}Release${sep}addon.node`,
         `prebuilts${sep}linux-x64-glibc${sep}addon-napi06.node`,
-        COPYFILE_FICLONE,
+        fs.constants.COPYFILE_FICLONE,
       );
     });
 
     it("should create the output directory and call copyFile for every file", () => {
-      const {
-        copyFileSync,
-        mkdirSync,
-        constants: { COPYFILE_FICLONE },
-      } = jest.requireMock<FsMock>("node:fs");
+      vol.fromJSON({
+        "build/Release/libfoo.so": "contentA",
+        "build/Release/libbar.so": "contentB",
+      });
+      const mkdirSync = vi.spyOn(fs, "mkdirSync");
+      const copyFileSync = vi.spyOn(fs, "copyFileSync");
 
       copyArtifacts(
         "build/Release",
@@ -109,12 +98,12 @@ describe("addon", () => {
       expect(copyFileSync).toHaveBeenCalledWith(
         `build${sep}Release${sep}libfoo.so`,
         `prebuilts${sep}linux-x64-glibc${sep}libfoo.so`,
-        COPYFILE_FICLONE,
+        fs.constants.COPYFILE_FICLONE,
       );
       expect(copyFileSync).toHaveBeenCalledWith(
         `build${sep}Release${sep}libbar.so`,
         `prebuilts${sep}linux-x64-glibc${sep}libbar.so`,
-        COPYFILE_FICLONE,
+        fs.constants.COPYFILE_FICLONE,
       );
     });
   });

@@ -29,6 +29,9 @@
     },
     {
       "path": "./tsconfig.test.json"
+    },
+    {
+      "path": "./tsconfig.tools.json"
     }
   ]
 }
