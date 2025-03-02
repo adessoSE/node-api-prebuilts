@@ -52,6 +52,8 @@ jobs:
       - name: Install Yarn with Corepack
         run: corepack enable |
           corepack install
+      - name: yarn install
+        run: yarn install --immutable --immutable-cache
 
       - name: lint
         run: yarn lint
@@ -70,6 +72,8 @@ jobs:
       - name: Install Yarn with Corepack
         run: corepack enable |
           corepack install
+      - name: yarn install
+        run: yarn install --immutable --immutable-cache
 
       - name: jest
         run: yarn test
