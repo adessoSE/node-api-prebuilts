@@ -2,7 +2,7 @@
   "name": "@adesso-se/node-api-prebuilts",
   "description": "A CLI and library to manage, locate and load prebuilt node addons targetting Node-API.",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.1.0-alpha.0",
   "homepage": "https://github.com/adessoSE/node-api-prebuilts#readme",
   "repository": "github:adessoSE/node-api-prebuilts",
   "author": "Henrik Gaßmann <Henrik.Gassmann@adesso.de>",
