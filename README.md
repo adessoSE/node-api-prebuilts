@@ -1,4 +1,3 @@
-## 🚧 **UNDER CONSTRUCTION** 🚧
 # `node-api-prebuilts`
 
 A CLI and library to manage, locate and load prebuilt node addons targetting [Node-API].
@@ -131,6 +130,17 @@ export interface AddonModule<Addon extends object = UnknownRecord> {
 }
 // exposition only => not exported or part of the package API
 type UnknownRecord = Record<string | number | symbol, unknown>;
+
+/**
+ * Returns the triplet composed from the cross compiling environment and the
+ * current host.
+ */
+export function activeTriplet(): Triplet;
+
+/**
+ * Maps a triplet to a filesystem-safe string.
+ */
+export function tripletId(triplet: Triplet): string;
 ```
 Note that this doesn't describe all public APIs but the most commonly used ones.
 Consult `src/index.ts` for a complete list. All public APIs have JSDoc comments.
