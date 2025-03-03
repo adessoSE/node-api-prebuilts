@@ -6,15 +6,16 @@ directory structure which disambiguates the binaries by their triplets.
 It serves a similar purpose to [`prebuildify`] and [`pkg-prebuilds`].
 
 Design goals:
-  * don't drag in any "unnecessary" dependencies (see [below](#no-unnecessary-dependencies))
-  * be build-system agnostic
-  * no magic / explicit configuration over guesswork
-  * be lightweight
-  * provide typed APIs for CLI commands
+
+* don't drag in any "unnecessary" dependencies (see [below](#no-unnecessary-dependencies))
+* be build-system agnostic
+* no magic / explicit configuration over guesswork
+* be lightweight
+* provide typed APIs for CLI commands
 
 Non-goals:
-  * Support node addons implemented with nan / V8 / libuv APIs
 
+* Support node addons implemented with nan / V8 / libuv APIs
 
 ## Usage
 
@@ -24,26 +25,31 @@ yarn add @adesso-se/node-api-prebuilts
 npm install --save @adesso-se/node-api-prebuilts
 ```
 
-Add the `prebuilts/` directory to your `.gitignore` and include it in your 
+Add the `prebuilts/` directory to your `.gitignore` and include it in your
 distribution package via the `package.json#files` property.
 
 Add a post-build step to your native addon that copies the built addon into the
 `prebuilts` directory. The invocation should roughly look like this:
+
 ```sh
 node-api-prebuilts --cmd=copy --build-dir=buid/Release --package-dir=. --name=nvefs --napi-version=8
 ```
+
 See [CLI Documentation](#cli-documentation) for more information.
 
 Add a `loader-options.json` to your package. It defines the supported Node API
 versions and the addon name in a central place, e.g.:
+
 ```json
 {
   "name": "nvefs",
   "napi_versions": [8]
 }
 ```
+
 With the scaffolding in place the addon can be loaded like this (assuming the
 compiled js output is placed in the package root):
+
 ```ts
 import { requireAddon } from '@adesso-se/node-api-prebuilts';
 const {
@@ -59,6 +65,7 @@ const {
 
 Lastly you want to prevent rebuilding the native addon on package-install if a
 suitable prebuilt binary already exists:
+
 ```json
 {
   "scripts": {
@@ -66,9 +73,9 @@ suitable prebuilt binary already exists:
   }
 }
 ```
-The `check-path` command sets the exit code to zero if a prebuilt binary has 
-been found and to a non-zero exit code otherwise.
 
+The `check-path` command sets the exit code to zero if a prebuilt binary has
+been found and to a non-zero exit code otherwise.
 
 ### API Synopsis
 
@@ -142,13 +149,13 @@ export function activeTriplet(): Triplet;
  */
 export function tripletId(triplet: Triplet): string;
 ```
+
 Note that this doesn't describe all public APIs but the most commonly used ones.
 Consult `src/index.ts` for a complete list. All public APIs have JSDoc comments.
 
-
 ### CLI Documentation
 
-```
+```text
 USAGE
   $ node-api-prebuilts [-h | --help]
   $ node-api-prebuilts --cmd=<command>
@@ -199,8 +206,8 @@ EXAMPLES
   $ node-api-prebuilts --cmd=check-path --loader-options=loader-options.json
 ```
 
-
 ## No unnecessary Dependencies
+
 At its core this libray has one job: Locate (and load) a native node addon for
 the execution triplet. Therefore we only want to depend on packages that
 directly help with this task and are stable. It is also quite annoying to
@@ -208,11 +215,9 @@ retrieve deprecation/security notices about libraries which are only ever used
 by install scripts. This implies that we can't use `yargs` and the like to parse
 CLI arguments.
 
-
 ## License
 
 [MIT License](https://choosealicense.com/licenses/mit/)
-
 
 [Node-API]: https://nodejs.org/dist/latest-v16.x/docs/api/n-api.html#node-api
 [`prebuildify`]: https://www.npmjs.com/package/prebuildify
