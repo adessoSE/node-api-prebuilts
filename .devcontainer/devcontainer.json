@@ -8,7 +8,7 @@
         "arcanis.vscode-zipfs",
         "dbaeumer.vscode-eslint",
         "EditorConfig.EditorConfig",
-        "esbenp.prettier-vscode",
+        "esbenp.prettier-vscode"
       ]
     }
   }
