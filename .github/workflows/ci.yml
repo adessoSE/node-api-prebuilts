@@ -11,12 +11,12 @@ jobs:
     name: Validate dependencies
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           filter: blob:limit=2m
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 20
       - name: Install Yarn with Corepack
         run: corepack enable |
           corepack install
@@ -32,12 +32,12 @@ jobs:
     name: Compile TypeScript
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           filter: blob:limit=2m
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 20
       - name: Install Yarn with Corepack
         run: corepack enable |
           corepack install
@@ -49,12 +49,12 @@ jobs:
     name: Run ESLint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           filter: blob:limit=2m
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 20
       - name: Install Yarn with Corepack
         run: corepack enable |
           corepack install
@@ -71,12 +71,12 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           filter: blob:limit=2m
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 20
       - name: Install Yarn with Corepack
         run: corepack enable |
           corepack install
