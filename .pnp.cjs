@@ -36,7 +36,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:9.1.0"],\
           ["eslint-plugin-simple-import-sort", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:12.1.1"],\
           ["memfs", "npm:4.17.0"],\
-          ["prettier", "npm:3.5.2"],\
+          ["prettier", "npm:3.6.2"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"],\
           ["typescript-eslint", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:8.48.0"],\
           ["vitest", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:3.0.7"]\
@@ -65,7 +65,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-config-prettier", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:9.1.0"],\
           ["eslint-plugin-simple-import-sort", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:12.1.1"],\
           ["memfs", "npm:4.17.0"],\
-          ["prettier", "npm:3.5.2"],\
+          ["prettier", "npm:3.6.2"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"],\
           ["typescript-eslint", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:8.48.0"],\
           ["vitest", "virtual:aeb8d7a5f9c95001385f0d3ce8ef7bf2f9dad9a8fb6a6b0ce0ff2fd17d72efeacf2c05cff3f0a7c3f323186651e9e3a823b8125f7509697283f061dcbb943aab#npm:3.0.7"]\
@@ -2562,10 +2562,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["prettier", [\
-      ["npm:3.5.2", {\
-        "packageLocation": "./.yarn/unplugged/prettier-npm-3.5.2-1191b74a1d/node_modules/prettier/",\
+      ["npm:3.6.2", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.6.2-2668152203/node_modules/prettier/",\
         "packageDependencies": [\
-          ["prettier", "npm:3.5.2"]\
+          ["prettier", "npm:3.6.2"]\
         ],\
         "linkType": "HARD"\
       }]\
