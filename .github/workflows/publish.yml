@@ -41,6 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: ${{ github.ref }}
           fetch-tags: true
           filter: "blob:none"
       - uses: actions/setup-node@v6
